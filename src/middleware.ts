@@ -4,7 +4,11 @@ import { betterFetch } from "@better-fetch/fetch";
 
 const authRoutes = ["/sign-in", "/sign-up"];
 const passwordRoutes = ["/forgot-password", "/reset-password"];
-const dashboardRoutes = ["/dashboard"];
+const dashboardRoutes = [
+  "/dashboard/faculty",
+  "/dashboard/student",
+  "/dashboard",
+];
 const adminRoutes = ["/admin"];
 
 export default async function authMiddleware(req: NextRequest) {
@@ -43,6 +47,24 @@ export default async function authMiddleware(req: NextRequest) {
   if (session && isDashboardRoute) {
     return NextResponse.next();
   }
+  if (session && pathName === "/") {
+    return NextResponse.redirect(
+      new URL(`/dashboard/${session.user.user_role.toLowerCase()}`, req.url)
+    );
+  }
+  if (
+    session.user.user_role === "Faculty" &&
+    pathName === "/dashboard/student"
+  ) {
+    return NextResponse.redirect(new URL("/dashboard/faculty", req.url));
+  }
+  if (
+    session.user.user_role === "Student" &&
+    pathName === "/dashboard/faculty"
+  ) {
+    return NextResponse.redirect(new URL("/dashboard/student", req.url));
+  }
+  console.log(session.user.user_role);
   return NextResponse.next();
 }
 

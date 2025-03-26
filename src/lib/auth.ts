@@ -32,6 +32,11 @@ export const auth = betterAuth({
   },
   plugins: [openAPI(), admin()],
   user: {
+    additionalFields: {
+      user_role: {
+        type: "string",
+      },
+    },
     deleteUser: {
       enabled: true,
     },

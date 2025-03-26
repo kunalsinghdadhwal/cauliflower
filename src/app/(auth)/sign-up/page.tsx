@@ -47,13 +47,11 @@ export default function SignUp() {
   const { toast } = useToast();
   const { theme, setTheme } = useTheme();
 
-  // States for password UI
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [pending, setPending] = useState(false);
 
-  // Using the signUpSchema from your lib
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -64,7 +62,6 @@ export default function SignUp() {
     },
   });
 
-  // Calculate password strength based on common criteria.
   const calculatePasswordStrength = (password: string) => {
     let strength = 0;
     if (password.length >= 8) strength += 25;
@@ -301,7 +298,7 @@ export default function SignUp() {
                   name="confirmPassword"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Confirm Master Password</FormLabel>
+                      <FormLabel>Confirm Password</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <Lock className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
@@ -348,28 +345,6 @@ export default function SignUp() {
             </Form>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4 px-0">
-            <Alert className="mb-6 border-red-500 dark:border-red-400 bg-red-50 dark:bg-red-950/30 text-red-800 dark:text-red-300">
-              <AlertTriangle className="h-4 w-4" />
-              <AlertDescription>
-                By creating an account, you acknowledge that we cannot retrieve
-                your master password. Please ensure you remember it, Agree to
-                our{" "}
-                <Link
-                  href="/terms"
-                  className="underline underline-offset-2 hover:text-black/80 dark:hover:text-white/80"
-                >
-                  Terms of Service
-                </Link>{" "}
-                and{" "}
-                <Link
-                  href="/privacy"
-                  className="underline underline-offset-2 hover:text-black/80 dark:hover:text-white/80"
-                >
-                  Privacy Policy
-                </Link>
-                .
-              </AlertDescription>
-            </Alert>
             <div className="text-sm text-center">
               Already have an account?{" "}
               <Link
@@ -396,11 +371,10 @@ export default function SignUp() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center p-8 max-w-md">
               <h2 className="text-3xl font-bold mb-4 text-white">
-                Secure Password Manager
+                College Managment System
               </h2>
               <p className="text-lg text-zinc-300">
-                Keep all your credentials safe and accessible across all your
-                devices with industry-leading encryption.
+                AI-driven college management system for automation, efficiency, and student engagement.
               </p>
             </div>
           </div>

@@ -304,11 +304,10 @@ export default function LoginPage() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center p-8 max-w-md">
               <h2 className="text-3xl font-bold mb-4 text-white">
-                Secure Access Portal
+                College Managment System
               </h2>
               <p className="text-lg text-zinc-300">
-                Our platform uses industry-leading security protocols to ensure
-                your data remains protected at all times.
+                AI-driven college management system for automation, efficiency, and student engagement.
               </p>
             </div>
           </div>

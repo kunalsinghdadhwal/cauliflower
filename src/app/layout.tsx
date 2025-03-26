@@ -17,8 +17,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Sigma Boyz",
-  description: "Sigma Boyz web programming project",
+  title: "Cauliflower College",
+  description: "Cauliflower College is the best college managment system.",
 };
 const inter = Inter({ subsets: ["latin"] });
 export default async function RootLayout({

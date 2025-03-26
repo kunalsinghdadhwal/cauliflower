@@ -44,7 +44,7 @@ export const auth = betterAuth({
         user.email,
         user.name,
         token,
-        "Sigma Boyz Reset Password Link",
+        "Cauliflower College Reset Password Link",
         "reset"
       );
     },
@@ -57,13 +57,13 @@ export const auth = betterAuth({
         user.email,
         user.name,
         token,
-        "Sigma Boyz Verification Code",
+        "Cauliflower College Verification Code",
         "verify"
       );
     },
   },
   advanced: {
-    cookiePrefix: "sigma-boyz",
+    cookiePrefix: "cauliflower",
     useSecureCookies: true,
   },
 } satisfies BetterAuthOptions);

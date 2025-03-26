@@ -54,24 +54,3 @@ export const verification = pgTable("verification", {
   createdAt: timestamp("created_at"),
   updatedAt: timestamp("updated_at"),
 });
-
-export const passwords = pgTable("passwords", {
-  userId: text("user_id")
-    .notNull()
-    .references(() => user.id, { onDelete: "cascade" }),
-  username: text("username").notNull(),
-  password: text("password").notNull(),
-  notes: text("notes"),
-  serviceName: text("service_name").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
-});
-
-export const masterPasswords = pgTable("masterPasswords", {
-  email: text("email")
-    .notNull()
-    .references(() => user.email, { onDelete: "cascade" }),
-  password: text("password").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
-});

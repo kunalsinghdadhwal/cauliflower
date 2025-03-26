@@ -17,6 +17,8 @@ pnpm-lock.yaml
 /.next/
 /out/
 postgres/
+redis_insight_volume_data/
+redis_volume_data/
 src/db/migrations/
 
 # production

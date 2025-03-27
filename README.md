@@ -15,6 +15,8 @@ The **Smart College Management System** is a centralized platform designed to st
 ### Bonus Features
 - **Voice Assistant**: Quick access to timetables and events using voice commands.
 
+### [PPT](https://drive.google.com/file/d/1HWnGsgIelp3fDGNVS--6aDoabazhctYj/view?usp=sharing)
+
 ## Tech Stack
 - **Frontend**: Next.js, ShadCN,
 - **Backend**: PostgreSQL, Drizzle, better-auth, Docker

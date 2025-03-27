@@ -16,15 +16,11 @@ The **Smart College Management System** is a centralized platform designed to st
 - **Voice Assistant**: Quick access to timetables and events using voice commands.
 
 ## Tech Stack
-- **Frontend**: Next.js, ShadCN (UI Library), TypeScript
-- **Backend**: PostgreSQL (Database), Drizzle ORM (for SQL Injection prevention)
+- **Frontend**: Next.js, ShadCN,
+- **Backend**: PostgreSQL, Drizzle, better-auth, Docker
 - **Security**: Role-based authentication to ensure data protection
 
 ## Installation & Setup
-### Prerequisites
-Ensure you have the following installed:
-- [Node.js](https://nodejs.org/)
-- [PostgreSQL](https://www.postgresql.org/)
 
 ### Steps to Run the Project
 1. **Clone the Repository**:
@@ -39,14 +35,19 @@ Ensure you have the following installed:
    ```
 
 3. **Configure Environment Variables**:
-   Create a `.env` file in the root directory and add your PostgreSQL database credentials:
+   Create a `.env` file in the root directory and copy the `.env.example`:
    ```sh
-   DATABASE_URL=your_postgres_connection_string
+   # Enter all the variables as given in file also add the resend api key
+   cp .env.example .env
+   # To sping up the database
+   docker-compose up -d
    ```
 
 4. **Run Database Migrations**:
    ```sh
    npx drizzle-kit push
+   # To see the database
+   npx drizzle-kit studio
    ```
 
 5. **Start the Development Server**:
@@ -56,19 +57,6 @@ Ensure you have the following installed:
 
 6. **Access the Application**:
    Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Contributing
-We welcome contributions! To contribute:
-1. Fork the repository.
-2. Create a new branch (`feature/your-feature`).
-3. Commit your changes.
-4. Open a pull request.
-
-## License
-This project is licensed under the MIT License.
-
-## Contact
-For any issues or queries, feel free to reach out through GitHub Issues.
 
 ---
 **Developed by Team Cauliflower** 🚀

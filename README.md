@@ -17,6 +17,8 @@ The **Smart College Management System** is a centralized platform designed to st
 
 ### [Demo Video](https://drive.google.com/file/d/1HWnGsgIelp3fDGNVS--6aDoabazhctYj/view?usp=sharing)
 
+### [PPT](https://drive.google.com/file/d/1r9LqUn8Mf1jcNdRBD684-fYLtIg3pfmR/view?usp=drive_link)
+
 ## Tech Stack
 - **Frontend**: Next.js, ShadCN,
 - **Backend**: PostgreSQL, Drizzle, better-auth, Docker

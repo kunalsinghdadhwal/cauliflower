@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Smart College Management System
 
-## Getting Started
+## Overview
+The **Smart College Management System** is a centralized platform designed to streamline academic and administrative operations in colleges. It offers features such as student enrollment, faculty allocation, attendance tracking, and resource management. The system ensures an efficient digital experience while maintaining data security and scalability.
 
-First, run the development server:
+## Features
+### Core Functionalities
+- **User Roles & Authentication**: Admin, Faculty, and Student access levels.
+- **Student Enrollment & Record Management**: Manage student admissions, profiles, and academic history.
+- **Course & Faculty Management**: Assign faculty to courses, manage schedules, and allocate resources.
+- **Attendance Tracking**: Digital system for students and faculty to record and monitor attendance.
+- **Examination & Grade Management**: Manage student assessments, exams, and results.
+- **Notification System**: Announcements, alerts, and push notifications for students and faculty.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Bonus Features
+- **Voice Assistant**: Quick access to timetables and events using voice commands.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
+- **Frontend**: Next.js, ShadCN (UI Library), TypeScript
+- **Backend**: PostgreSQL (Database), Drizzle ORM (for SQL Injection prevention)
+- **Security**: Role-based authentication to ensure data protection
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation & Setup
+### Prerequisites
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Steps to Run the Project
+1. **Clone the Repository**:
+   ```sh
+   git clone https://github.com/kunalsinghdadhwal/cauliflower.git
+   cd cauliflower
+   ```
 
-## Learn More
+2. **Install Dependencies**:
+   ```sh
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Configure Environment Variables**:
+   Create a `.env` file in the root directory and add your PostgreSQL database credentials:
+   ```sh
+   DATABASE_URL=your_postgres_connection_string
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run Database Migrations**:
+   ```sh
+   npx drizzle-kit push
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **Start the Development Server**:
+   ```sh
+   npm run dev
+   ```
 
-## Deploy on Vercel
+6. **Access the Application**:
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
+We welcome contributions! To contribute:
+1. Fork the repository.
+2. Create a new branch (`feature/your-feature`).
+3. Commit your changes.
+4. Open a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+This project is licensed under the MIT License.
+
+## Contact
+For any issues or queries, feel free to reach out through GitHub Issues.
+
+---
+**Developed by Team Cauliflower** 🚀

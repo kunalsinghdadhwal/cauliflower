@@ -33,6 +33,7 @@ import {
   User,
   Users,
 } from "lucide-react"
+import { authClient } from "@/lib/auth-client"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -41,7 +42,7 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children, role }: DashboardLayoutProps) {
   const pathname = usePathname()
-  const [userName, setUserName] = useState(role === "student" ? "John Doe" : "Dr. Smith")
+  const [userName, setUserName] = useState(role === "student" ? "Kunal Singh" : "Dr. Smith")
 
   const studentNavItems = [
     { href: "/dashboard/student", label: "Dashboard", icon: Home },
@@ -52,6 +53,7 @@ export default function DashboardLayout({ children, role }: DashboardLayoutProps
     { href: "/dashboard/student/payments", label: "Fees & Payments", icon: CreditCard },
     { href: "/dashboard/student/events", label: "Events", icon: Calendar },
     { href: "/dashboard/student/feedback", label: "Faculty Feedback", icon: MessageSquare },
+    { href: "/dashboard/student/assistant", label: "Voice assistant", icon: MessageSquare },
   ]
 
   const facultyNavItems = [
@@ -63,6 +65,11 @@ export default function DashboardLayout({ children, role }: DashboardLayoutProps
   ]
 
   const navItems = role === "student" ? studentNavItems : facultyNavItems
+
+  const handlesignout = async () => {
+    const res = await authClient.signOut()
+  }
+
 
   return (
     <SidebarProvider>
@@ -98,8 +105,8 @@ export default function DashboardLayout({ children, role }: DashboardLayoutProps
                 <p className="truncate text-sm font-medium">{userName}</p>
                 <p className="truncate text-xs text-muted-foreground">{role === "student" ? "Student" : "Faculty"}</p>
               </div>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="/login">
+              <Button variant="ghost" size="icon" onClick={handlesignout } asChild>
+                <Link href="/sign-in">
                   <LogOut className="h-5 w-5" />
                 </Link>
               </Button>

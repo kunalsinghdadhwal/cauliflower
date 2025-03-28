@@ -154,9 +154,9 @@ export default function CollegeLandingPage() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">About Horizon College</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">About Cauliflower College</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Founded in 1985, Horizon College has been a beacon of academic excellence for over 35 years.
+                  Founded in 1985, Cauliflower College has been a beacon of academic excellence for over 35 years.
                 </p>
               </div>
             </div>
@@ -520,7 +520,7 @@ export default function CollegeLandingPage() {
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Events & News</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Stay updated with the latest happenings at Horizon College.
+                  Stay updated with the latest happenings at Cauliflower College.
                 </p>
               </div>
             </div>
@@ -628,7 +628,7 @@ export default function CollegeLandingPage() {
                 <div className="space-y-2">
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Ready to Join Our Community?</h2>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-                    Take the first step towards your future by applying to Horizon College today.
+                    Take the first step towards your future by applying to Cauliflower College today.
                   </p>
                 </div>
                 <ul className="grid gap-6">
@@ -754,11 +754,11 @@ export default function CollegeLandingPage() {
                     <div>
                       <h3 className="text-xl font-bold">Email</h3>
                       <p className="text-muted-foreground">
-                        info@horizoncollege.edu
+                        info@Cauliflowercollege.edu
                         <br />
-                        admissions@horizoncollege.edu
+                        admissions@Cauliflowercollege.edu
                         <br />
-                        financialaid@horizoncollege.edu
+                        financialaid@Cauliflowercollege.edu
                       </p>
                     </div>
                   </li>
@@ -785,7 +785,7 @@ export default function CollegeLandingPage() {
           <div className="container relative grid items-center justify-center gap-4 px-4 text-center md:px-6">
             <div className="space-y-3 max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold tracking-tighter md:text-5xl/tight">
-                Begin Your Journey at Horizon College
+                Begin Your Journey at Cauliflower College
               </h2>
               <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl/relaxed">
                 Take the first step towards a transformative educational experience that will shape your future and open
@@ -829,7 +829,7 @@ export default function CollegeLandingPage() {
             <div className="flex flex-col gap-3 lg:max-w-sm">
               <div className="flex items-center gap-2">
                 <GraduationCap className="h-6 w-6" />
-                <span className="text-xl font-bold">Horizon College</span>
+                <span className="text-xl font-bold">Cauliflower College</span>
               </div>
               <p className="text-sm text-muted-foreground">
                 Empowering students to achieve academic excellence and personal growth since 1985.
@@ -940,7 +940,7 @@ export default function CollegeLandingPage() {
           </div>
           <div className="flex flex-col gap-4 sm:flex-row items-center justify-between">
             <p className="text-xs text-muted-foreground">
-              &copy; {new Date().getFullYear()} Horizon College. All rights reserved.
+              &copy; {new Date().getFullYear()} Cauliflower College. All rights reserved.
             </p>
             <div className="flex gap-4">
               <Link href="#" className="text-xs text-muted-foreground hover:underline">

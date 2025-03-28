@@ -6,7 +6,6 @@ import { BarChart, Bell, BookOpen, Calendar, Clock, FileText, GraduationCap } fr
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 export default function FacultyDashboard() {
-  // Mock data
   const faculty = {
     name: "Dr. Smith",
     employeeId: "FAC2023001",

@@ -1,60 +1,48 @@
-import DashboardLayout from "@/components/dashboard-layout"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Progress } from "@/components/ui/progress"
-import { BarChart, Bell, BookOpen, Calendar, Clock, FileText, GraduationCap, Users } from "lucide-react"
+"use client";
 
-export default function StudentDashboard() {
-  // Mock data
-  const student = {
-    name: "John Doe",
-    registerNumber: "2023CS1001",
-    degree: "B.Tech Computer Science",
-    cgpa: 3.8,
-    coursesRegistered: 5,
-    attendancePercentage: 92,
-  }
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { GraduationCap, BarChart, BookOpen, Users, Sun, Moon, Calendar, Bell } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+import DashboardLayout from "@/components/dashboard-layout";
 
-  const todaySchedule = [
-    {
-      id: "1",
-      course: "CS101 - Introduction to Programming",
-      startTime: "09:00",
-      endTime: "10:30",
-      location: "Room 201",
-    },
-    { id: "2", course: "MA102 - Linear Algebra", startTime: "11:00", endTime: "12:30", location: "Room 305" },
-    { id: "3", course: "PH101 - Physics I", startTime: "14:00", endTime: "15:30", location: "Lab 102" },
-  ]
+export default function Dashboard() {
+  const { theme, setTheme } = useTheme();
+  const [student, setStudent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  const assignments = [
-    { id: "1", title: "Programming Assignment 3", course: "CS101", dueDate: "Tomorrow", status: "pending" },
-    { id: "2", title: "Math Problem Set", course: "MA102", dueDate: "In 3 days", status: "pending" },
-  ]
+  useEffect(() => {
+    async function fetchStudent() {
+      try {
+        const res = await fetch("/api/students", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: "CnpQwRqLYSJ7S37AMq8MSbRjZ4zKYYH5", // Posting the userId
+          })
+        });
+        if (!res.ok) throw new Error(`Error: ${res.status}`);
+        const data = await res.json();
+        setStudent(data);
+      } catch (err) {
+        setError("Failed to load student data");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-  const messages = [
-    {
-      id: "1",
-      title: "Class Rescheduled",
-      content: "Tomorrow's CS101 class will be held in Room 302",
-      date: "Today",
-      sender: "Dr. Smith",
-    },
-    {
-      id: "2",
-      title: "Quiz Announcement",
-      content: "There will be a quiz in MA102 next week",
-      date: "Yesterday",
-      sender: "Dr. Johnson",
-    },
-  ]
+    fetchStudent();
+  }, []);
 
-  const gpaData = [
-    { semester: "Sem 1", gpa: 3.6 },
-    { semester: "Sem 2", gpa: 3.7 },
-    { semester: "Sem 3", gpa: 3.5 },
-    { semester: "Sem 4", gpa: 3.8 },
-  ]
+  if (loading) return <p className="text-center">Loading...</p>;
+  if (error) return <p className="text-center text-red-500">{error}</p>;
+  if (!student) return <p className="text-center">No student data found</p>;
 
   return (
     <DashboardLayout role="student">
@@ -72,9 +60,19 @@ export default function StudentDashboard() {
           </div>
         </div>
 
+        <Button
+          variant="outline"
+          size="icon"
+          className="absolute top-6 right-4"
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        </Button>
+
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Student Name</CardTitle>
               <GraduationCap className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -83,18 +81,20 @@ export default function StudentDashboard() {
               <p className="text-xs text-muted-foreground">{student.registerNumber}</p>
             </CardContent>
           </Card>
+
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Current CGPA</CardTitle>
               <BarChart className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{student.cgpa}</div>
+              <div className="text-2xl font-bold">{(student.cgpa / 10).toFixed(2)}</div>
               <p className="text-xs text-muted-foreground">{student.degree}</p>
             </CardContent>
           </Card>
+
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Courses Registered</CardTitle>
               <BookOpen className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -103,8 +103,9 @@ export default function StudentDashboard() {
               <p className="text-xs text-muted-foreground">Current Semester</p>
             </CardContent>
           </Card>
+
           <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-sm font-medium">Attendance</CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -114,108 +115,7 @@ export default function StudentDashboard() {
             </CardContent>
           </Card>
         </div>
-
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-          <Card className="lg:col-span-4">
-            <CardHeader>
-              <CardTitle>Academic Progress</CardTitle>
-              <CardDescription>GPA trend across semesters</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="h-[200px] space-y-4">
-                <div className="flex h-full items-end gap-2">
-                  {gpaData.map((item) => (
-                    <div key={item.semester} className="flex flex-1 flex-col items-center gap-2">
-                      <div
-                        className="w-full rounded-md bg-primary"
-                        style={{ height: `${(item.gpa / 4) * 100}%` }}
-                      ></div>
-                      <span className="text-xs font-medium">{item.semester}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-xs text-muted-foreground">0.0</span>
-                  <span className="text-xs text-muted-foreground">4.0</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="lg:col-span-3">
-            <CardHeader>
-              <CardTitle>Today&apos;s Schedule</CardTitle>
-              <CardDescription>Your classes for today</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {todaySchedule.map((item) => (
-                  <div key={item.id} className="flex items-start gap-4">
-                    <div className="rounded-md bg-primary/10 p-2">
-                      <Clock className="h-4 w-4 text-primary" />
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-sm font-medium">{item.course}</p>
-                      <p className="text-xs text-muted-foreground">
-                        {item.startTime} - {item.endTime} • {item.location}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle>Assignments Due</CardTitle>
-              <CardDescription>Upcoming deadlines</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {assignments.map((item) => (
-                  <div key={item.id} className="flex items-start gap-4">
-                    <div className="rounded-md bg-primary/10 p-2">
-                      <FileText className="h-4 w-4 text-primary" />
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-sm font-medium">{item.title}</p>
-                      <p className="text-xs text-muted-foreground">
-                        {item.course} • Due {item.dueDate}
-                      </p>
-                    </div>
-                    <div className="ml-auto">
-                      <Button size="sm">Submit</Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Class Messages</CardTitle>
-              <CardDescription>Announcements from faculty</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {messages.map((item) => (
-                  <div key={item.id} className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm font-medium">{item.title}</p>
-                      <p className="text-xs text-muted-foreground">{item.date}</p>
-                    </div>
-                    <p className="text-sm">{item.content}</p>
-                    <p className="text-xs text-muted-foreground">From: {item.sender}</p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </DashboardLayout>
-  )
+  );
 }
-

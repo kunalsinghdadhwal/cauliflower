@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  DotsHorizontalIcon,
+  DotsCauliflowertalIcon,
 } from '@radix-ui/react-icons';
 
 import { cn } from '@/lib/utils';
@@ -104,7 +104,7 @@ const PaginationEllipsis = ({
     className={cn('flex h-9 w-9 items-center justify-center', className)}
     {...props}
   >
-    <DotsHorizontalIcon className="h-4 w-4" />
+    <DotsCauliflowertalIcon className="h-4 w-4" />
     <span className="sr-only">More pages</span>
   </span>
 );
